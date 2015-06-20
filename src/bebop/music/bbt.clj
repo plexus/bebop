@@ -29,7 +29,7 @@
         (metro-bpb metro))))
 
 (defn mbeat->bar-beat
-  "Convert from a metronome beat (simple integer) to a [bar beat]"
+  "Convert from a metronome beat (integer, counts from 1 up) to a [bar beat]"
   [metro mbeat]
   (let [bpb (metro-bpb metro)]
     [(inc (quot mbeat bpb)) (inc (mod mbeat bpb))]))

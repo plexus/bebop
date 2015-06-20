@@ -40,7 +40,6 @@
 (defn drum-loop [mbeat]
   (let [song @song
         metro (:metro song)
-        mbeat (metro)
         drum-pattern (:drums song)
         max-bars (apply max (map (comp first first) drum-pattern))
         bar-beat (mbeat->bar-beat metro mbeat)
@@ -74,4 +73,5 @@
   (swap! song start-stop)
   (if (paused? (:metro @song))
     (stop)
-    (drum-loop (:metro @song))))
+    (let [next-beat ((:metro @song))]
+      (drum-loop (if (= 1 next-beat) 0 next-beat)))))

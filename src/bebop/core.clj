@@ -1,6 +1,4 @@
 (ns bebop.core
+  (:require [overtone.core :refer :all]))
 
-  ;; (:require [quil.core :as q]
-  ;;           [quil.middleware :as m]
-  ;;           [overtone.live :as o])
-  )
+(connect-external-server 6543)
